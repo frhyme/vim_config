@@ -205,7 +205,10 @@ let g:syntastic_markdown_mdl_exec = 'mdl'
 " RESTRICT MD013 for Line length, for restriction use tilde(~)
 " RESTRICT MD002 - First header should be a top level header, not adequate
 let g:syntastic_markdown_mdl_args = "-r '~MD013','~MD002' "
-
+" ---------------------------------
+" 20220501 - sng_hn.lee - syntax checker for python
+" E501 line too long (145 > 79 characters)
+let g:syntastic_python_pycodestyle_args='--ignore=E501'
 "=======================================================
 " 20220126 - sng_hn.lee - test for tab completion
 " use <tab> for trigger completion and navigate to the next complete item
@@ -241,10 +244,12 @@ autocmd FileType markdown let g:AutoPairs = {'(':')', '[':']', '{':'}','```':'``
 "=========================
 " 20220305 newly add auto bracket manually
 " globally 선언해주는 게 필요한데
-autocmd FileType python inoremap { {<CR><CR>}<UP><LEFT><TAB>
+"autocmd FileType python inoremap { {<CR><CR>}<UP><LEFT><TAB>
+autocmd FileType python inoremap { {}<LEFT>
 
 autocmd FileType javascript inoremap { {}<LEFT>
 autocmd FileType javascript inoremap [ []<LEFT>
+autocmd FileType javascript inoremap ( ()<LEFT>
 
 autocmd FileType markdown inoremap ( ()<LEFT>
 "autocmd FileType markdown inoremap [ []<LEFT>

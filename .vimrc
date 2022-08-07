@@ -246,10 +246,12 @@ autocmd FileType markdown let g:AutoPairs = {'(':')', '[':']', '{':'}','```':'``
 " globally 선언해주는 게 필요한데
 "autocmd FileType python inoremap { {<CR><CR>}<UP><LEFT><TAB>
 autocmd FileType python inoremap { {}<LEFT>
+autocmd FileType python inoremap " ""<LEFT>
+autocmd FileType python inoremap ' ''<LEFT>
 
 autocmd FileType javascript inoremap { {}<LEFT>
 autocmd FileType javascript inoremap [ []<LEFT>
-autocmd FileType javascript inoremap ( ()<LEFT>
+"autocmd FileType javascript inoremap ( ()<LEFT>
 
 autocmd FileType markdown inoremap ( ()<LEFT>
 "autocmd FileType markdown inoremap [ []<LEFT>

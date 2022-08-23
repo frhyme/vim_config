@@ -245,9 +245,9 @@ autocmd FileType markdown let g:AutoPairs = {'(':')', '[':']', '{':'}','```':'``
 " 20220305 newly add auto bracket manually
 " globally 선언해주는 게 필요한데
 "autocmd FileType python inoremap { {<CR><CR>}<UP><LEFT><TAB>
-autocmd FileType python inoremap { {}<LEFT>
-autocmd FileType python inoremap " ""<LEFT>
-autocmd FileType python inoremap ' ''<LEFT>
+" autocmd FileType python inoremap { {}<LEFT>
+" autocmd FileType python inoremap " ""<LEFT>
+" autocmd FileType python inoremap ' ''<LEFT>
 
 autocmd FileType javascript inoremap { {}<LEFT>
 autocmd FileType javascript inoremap [ []<LEFT>
@@ -311,4 +311,12 @@ match TrailingSpace /\s\+$/
 " BufWritePre: 전체 buffer를 file에 쓰기 전 을 의미하는 Event
 " 다만 이것도 해석이 필요함.
 autocmd FileType markdown,python,html,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+"=============================================================
+" 2022.08.24 - sng_hn.lee - Add Foldable
+" https://velog.io/@ggg/vim-folding
+set foldenable          " enable folding
+set foldlevelstart=10   " open most folds by default
+set foldnestmax=10      " 10 nested fold max
+nnoremap <space> za	" space open/closes folds
+set foldmethod=indent   " fold based on indent level
 "=============================================================

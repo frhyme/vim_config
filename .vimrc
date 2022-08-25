@@ -315,8 +315,12 @@ autocmd FileType markdown,python,html,javascript autocmd BufWritePre <buffer> :%
 " 2022.08.24 - sng_hn.lee - Add Foldable
 " https://velog.io/@ggg/vim-folding
 set foldenable          " enable folding
-set foldlevelstart=10   " open most folds by default
-set foldnestmax=10      " 10 nested fold max
+set foldlevelstart=10
+set foldnestmax=10
+" nnoremap only works in normal mode but, noremap works normal, visual mode
 nnoremap <space> za	" space open/closes folds
 set foldmethod=indent   " fold based on indent level
+" 2022-08-25 (Thu) - save and load folding 
+autocmd BufWinLeave *.py mkview
+autocmd BufWinEnter *.py silent loadview
 "=============================================================

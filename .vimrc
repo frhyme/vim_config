@@ -324,7 +324,9 @@ set foldmethod=indent   " fold based on indent level
 """
 "=============================================================
 " 2022.09.02 - frhyme - sometime folding doesnt work when below commands ar
-" activated. when it happend - remove the file in ~/.vim/view 
-autocmd BufWinLeave *.py mkview
-autocmd BufWinEnter *.py silent loadview
+" activated. when it happend - remove the file in ~/.vim/view
+" it is required to replace BufWinLeave to saved so, BufWineLeave to
+" BufWritePost
+autocmd FileType python autocmd BufWritePost *.py mkview
+autocmd FileType python autocmd BufWinEnter *.py silent loadview
 "=============================================================

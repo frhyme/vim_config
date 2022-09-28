@@ -260,6 +260,7 @@ autocmd FileType markdown inoremap ` ``<LEFT>
 autocmd FileType html inoremap " ""<LEFT>
 autocmd FileType html inoremap ' ''<LEFT>
 
+autocmd FileType go inoremap { {}<LEFT>
 "=========================
 " 20220306 - sng_hn.lee - for vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1

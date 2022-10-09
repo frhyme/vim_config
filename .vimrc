@@ -235,7 +235,7 @@ let g:NERDTreeWinSize=60
 "=======================================================
 " 20220225 - python syntax highlight in markdown
 " add vim, json syntax in markdown
-let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua']
+let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua', 'go']
 
 "=======================================================
 " 20220305 - Plugin AutoPair Config
@@ -315,7 +315,7 @@ match TrailingSpace /\s\+$/
 " 2022.03.25 - sng_hn.lee - 저장할 때, 끝에 공백 삭제.
 " BufWritePre: 전체 buffer를 file에 쓰기 전 을 의미하는 Event
 " 다만 이것도 해석이 필요함.
-autocmd FileType markdown,python,html,javascript autocmd BufWritePre <buffer> :%s/\s\+$//e
+autocmd FileType markdown,python,html,javascript,go autocmd BufWritePre <buffer> :%s/\s\+$//e
 "=============================================================
 " 2022.08.24 - sng_hn.lee - Add Foldable
 " https://velog.io/@ggg/vim-folding

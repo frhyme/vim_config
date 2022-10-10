@@ -182,37 +182,7 @@ let g:Powerline_symbols = 'fancy'
 "====================================================
 " 20220121 - for coc popup scroll by mouse
 set mouse=a
-"====================================================
-" 20220125 - for syntastic configuration
-" pylint, flake8
-"
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-
-let g:syntastic_python_checkers = ['flake8', 'pycodestyle']
-let g:syntastic_cpp_compiler = 'gcc'
-" ---------------------------------
-" 20220305 - sng_hn.lee - syntax checker for javascript
-" 20220305 - sng_hn.lee temporary disabled JS linter
-" let g:syntastic_javascript_checkers = ['eslint']
-" ---------------------------------
-" 20220305 - sng_hn.lee - syntax checker for markdown
-" let g:syntastic_markdown_checker = 'markdownlint'
-" gem install mdl before below line
-let g:syntastic_markdown_mdl_exec = 'mdl'
-" RESTRICT MD013 for Line length, for restriction use tilde(~)
-" RESTRICT MD002 - First header should be a top level header, not adequate
-let g:syntastic_markdown_mdl_args = "-r '~MD013','~MD002' "
-" ---------------------------------
-" 20220501 - sng_hn.lee - syntax checker for python
-" E501 line too long (145 > 79 characters)
-let g:syntastic_python_pycodestyle_args='--ignore=E501'
 "=======================================================
 " 20220126 - sng_hn.lee - test for tab completion
 " use <tab> for trigger completion and navigate to the next complete item
@@ -235,7 +205,7 @@ let g:NERDTreeWinSize=60
 "=======================================================
 " 20220225 - python syntax highlight in markdown
 " add vim, json syntax in markdown
-let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua', 'go']
+let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua', 'go', 'c']
 
 "=======================================================
 " 20220305 - Plugin AutoPair Config
@@ -259,12 +229,14 @@ autocmd FileType javascript inoremap [ []<LEFT>
 
 autocmd FileType markdown inoremap ( ()<LEFT>
 "autocmd FileType markdown inoremap [ []<LEFT>
-autocmd FileType markdown inoremap ` ``<LEFT>
+"autocmd FileType markdown inoremap ` ``<LEFT>
 
 autocmd FileType html inoremap " ""<LEFT>
 autocmd FileType html inoremap ' ''<LEFT>
 
 autocmd FileType go inoremap { {}<LEFT>
+
+autocmd FileType c inoremap { {}<LEFT>
 "=========================
 " 20220306 - sng_hn.lee - for vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -337,4 +309,7 @@ autocmd FileType python autocmd BufWinEnter *.py silent loadview
 
 "=============================================================
 " 2022-09-28 (Wed) - MarkdownPreview on vim
-source ./markdownpreview_config.vim
+source ~/gitRepositories/vim_config/markdownpreview_config.vim
+"====================================================
+" 20220125 - for syntastic configuration
+source ~/gitRepositories/vim_config/syntastic_config.vim

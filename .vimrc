@@ -145,6 +145,8 @@ iabbrev __fmt ---
 iabbrev <expr> __pwd system('pwd')
 iabbrev <expr> __ls system('ls')
 
+" 20221010 - sng_hn.lee - how to remove trailing space?
+iabbrev __code ```<CR>```
 
 function GetTodayDate()
     " local이 kor로 설정되어 있어서, 요일이 '토'와 같은 한글값으로 나온다.
@@ -237,6 +239,8 @@ autocmd FileType html inoremap ' ''<LEFT>
 autocmd FileType go inoremap { {}<LEFT>
 
 autocmd FileType c inoremap { {}<LEFT>
+
+
 "=========================
 " 20220306 - sng_hn.lee - for vim-indent-guides
 let g:indent_guides_enable_on_vim_startup = 1
@@ -313,3 +317,6 @@ source ~/gitRepositories/vim_config/markdownpreview_config.vim
 "====================================================
 " 20220125 - for syntastic configuration
 source ~/gitRepositories/vim_config/syntastic_config.vim
+
+
+

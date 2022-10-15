@@ -2,16 +2,18 @@
 " :helpgrep Eatchar
 " https://stackoverflow.com/questions/11858927/preventing-trailing-whitespace-when-using-vim-abbreviations
 func Eatchar(pat)
+    " 2022-10-14 (Fri) - frhyme
+    " pat stands for pattern
+    " nr2char: returns the character the the given ASCII value represents
+    " =~ means matches with pattern
+    " \s means any white space pattern
     let c = nr2char(getchar(0))
     return (c =~ a:pat) ? '' : c
 endfunc
 
-iabbr <silent> __a abcde<C-R>=Eatchar('\s')<CR>
-
-iabbrev <silent> __code ```<CR>```<C-R>=Eatchar('\s')<CR>
-
 function GetTodayDate()
     " local이 kor로 설정되어 있어서, 요일이 '토'와 같은 한글값으로 나온다.
+    "
     " Sat 와 같이 나오도록 하려면, locale을 변경해야 할 것 같은데, 이건 너무 큰
     " 변경점을 발생시키는 것으로 보인다.
     " 따라서 vimscript를 사용하여 다음처럼 변경해준다
@@ -38,5 +40,38 @@ function GetTodayDate()
     endif
     return today . ')'
 endfunction
-
-iabbrev <expr> __today GetTodayDate()
+"====================================
+" 2022-10-15 (Sat): sample iabbrev for removing trailing_space
+" <CR> meand Carriabe Return
+" <C-R>=, Ctrl + R= is used to insert the result of an expression at the
+" cursor.
+" <silent> means "it doesn't show any message while command is being executed
+iabbrev <silent> __test_shortcut target_full_word<C-R>=Eatchar('\s')<CR>
+"====================================
+" 2022-10-15 (Sat): for markdown code block
+autocmd FileType markdown iabbrev <silent> __code ```<CR><CR>```<UP><C-R>=Eatchar('\s')<CR>
+" 20221015 - <expr> doesn need C-R.
+iabbrev <expr> __today GetTodayDate().Eatchar('\s')
+"====================================================
+" Abbreviation - 20220105 - sng_hn.lee
+" abbreviate 를 줄여서 ab 로 써도 문제가 없습니다.
+" 하지만 저는 가독성을 위해 가능하면 full world를 쓰기 때문에 다음처럼
+" word의 충돌을 피하기 위해서, 시작은 __ 로 통일해줄 것
+" 사용하였습니다.
+" for Single word
+" iabbrev: valid in insert mode
+" cabbrev: valid in command mode
+" for Multi line
+" \: bash에서 multiline을 표시할 때는 앞에 backslash
+" <CR>: linebreak
+" Front Matter for Markdown
+autocmd FileType markdown iabbrev __fmt ---
+\<CR>title:
+\<CR>category:
+\<CR>tags:
+\<CR>---<CR>
+\<UP><UP><UP><UP><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><SPACE>
+\<C-R>=Eatchar('\s')<CR>
+" command for shell script
+iabbrev <expr> __pwd system('pwd')
+iabbrev <expr> __ls system('ls')

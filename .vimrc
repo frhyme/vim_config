@@ -123,27 +123,7 @@ Plug 'ryanoasis/vim-devicons'
 call plug#end()
 "====================================================
 
-"====================================================
-" Abbreviation - 20220105 - sng_hn.lee
-" abbreviate 를 줄여서 ab 로 써도 문제가 없습니다.
-" 하지만 저는 가독성을 위해 가능하면 full world를 쓰기 때문에 다음처럼
-" word의 충돌을 피하기 위해서, 시작은 __ 로 통일해줄 것
-" 사용하였습니다.
-" for Single word
-" iabbrev: valid in insert mode
-" cabbrev: valid in command mode
-" for Multi line
-" \: bash에서 multiline을 표시할 때는 앞에 backslash
-" <CR>: linebreak
-" Front Matter for Markdown
-iabbrev __fmt ---
-\<CR>title:
-\<CR>category:
-\<CR>tags:
-\<CR>---<CR>
-" command for shell script
-iabbrev <expr> __pwd system('pwd')
-iabbrev <expr> __ls system('ls')
+
 
 "====================================================
 " 20220106 - sng_hn.lee - PowerLine configurtion
@@ -196,7 +176,7 @@ autocmd FileType javascript inoremap { {}<LEFT>
 autocmd FileType javascript inoremap [ []<LEFT>
 "autocmd FileType javascript inoremap ( ()<LEFT>
 
-autocmd FileType markdown inoremap ( ()<LEFT>
+" autocmd FileType markdown inoremap ( ()<LEFT>
 "autocmd FileType markdown inoremap [ []<LEFT>
 "autocmd FileType markdown inoremap ` ``<LEFT>
 

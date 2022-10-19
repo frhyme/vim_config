@@ -75,3 +75,7 @@ autocmd FileType markdown iabbrev __fmt ---
 " command for shell script
 iabbrev <expr> __pwd system('pwd')
 iabbrev <expr> __ls system('ls')
+
+
+" 2022-10-20 (Thu) - for html comment
+autocmd FileType html iabbrev __comment <!--  --><LEFT><LEFT><LEFT><LEFT><C-R>=Eatchar('\s')<CR>

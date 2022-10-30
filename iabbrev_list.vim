@@ -90,7 +90,8 @@ autocmd FileType markdown iabbrev __fmt ---
 \<CR>category:
 \<CR>tags:
 \<CR>---<CR>
-\<UP><UP><UP><UP><END>
+\<CR>## <C-R>=GetCurrentFileName()<CR>
+\<UP><UP><UP><UP><UP><END>
 \<C-R>=Eatchar('\s')<CR>
 " command for shell script
 iabbrev <expr> __pwd system('pwd')

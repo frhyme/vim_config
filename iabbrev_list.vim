@@ -76,6 +76,29 @@ autocmd FileType markdown iabbrev __fmt ---
 iabbrev <expr> __pwd system('pwd')
 iabbrev <expr> __ls system('ls')
 
+function GetCurrentFileName()
+    " 2022-10-30 (Sun): get current file name
+    " expand:
+    " - % means curent file
+    " - :p means absolute path
+    " split: split string ex) split("a,b,c", ',')
+    " substitute: ex) substitute(target_str, pattern, replace_pattern, flags)
+    " flag g means global
+    " . means meta character in regex, so, for expressing dot character, use
+    " \\. 
+    " ISSUE:
+    " how to reassign value to variable?
+    " why first character of function name in vim should be upper case?
+    let current_absolute_path = expand("%:p")
+    let current_file_name = split(current_absolute_path, '/')[-1]
+    let r = substitute(current_file_name, "_", " ", "g")
+    let r1 = split(r, "\\.")[0]
+    return r1
+endfunction
+
+" 2022-10-30 (Sun): test
+" in Vim, to excute Ex commands by : is equivalent to commands between <C-R>
+autocmd FileType markdown iabbrev __current_file_name <C-R>=GetCurrentFileName().Eatchar('\s')<CR>
 
 " 2022-10-20 (Thu) - for html comment
 autocmd FileType html iabbrev __comment <!--  --><LEFT><LEFT><LEFT><LEFT><C-R>=Eatchar('\s')<CR>

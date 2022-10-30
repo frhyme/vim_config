@@ -183,6 +183,8 @@ autocmd FileType javascript inoremap [ []<LEFT>
 "autocmd FileType html inoremap " ""<LEFT>
 "autocmd FileType html inoremap ' ''<LEFT>
 
+autocmd FileType css inoremap { {}<LEFT>
+
 autocmd FileType go inoremap { {}<LEFT>
 
 autocmd FileType c inoremap { {}<LEFT>

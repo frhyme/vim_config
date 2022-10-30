@@ -103,3 +103,5 @@ autocmd FileType markdown iabbrev __current_file_name <C-R>=GetCurrentFileName()
 
 " 2022-10-20 (Thu) - for html comment
 autocmd FileType html iabbrev __comment <!--  --><LEFT><LEFT><LEFT><LEFT><C-R>=Eatchar('\s')<CR>
+" 2022-10-30 (Sun)- for css comment
+autocmd FileType css iabbrev __comment /*<CR><CR>*/<LEFT><LEFT><UP>

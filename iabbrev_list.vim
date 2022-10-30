@@ -40,13 +40,32 @@ function GetTodayDate()
     endif
     return today . ')'
 endfunction
+
+function GetCurrentFileName()
+    " 2022-10-30 (Sun): get current file name
+    " expand: type "help expand" for more info
+    " - % means curent file
+    " - :p means absolute path
+    " split: split string ex) split("a,b,c", ',')
+    " substitute: ex) substitute(target_str, pattern, replace_pattern, flags)
+    " flag g means global
+    " . means meta character in regex, so, for expressing dot character, use
+    " \\.
+    " ISSUE:
+    " why first character of function name in vim should be upper case?
+    let current_file_name = expand("%:p")
+    let current_file_name = split(current_file_name , '/')[-1]
+    let current_file_name = substitute(current_file_name, "_", " ", "g")
+    let current_file_name = split(current_file_name , "\\.")[0]
+    return current_file_name
+endfunction
 "====================================
 " 2022-10-15 (Sat): sample iabbrev for removing trailing_space
 " <CR> meand Carriabe Return
 " <C-R>=, Ctrl + R= is used to insert the result of an expression at the
 " cursor.
 " <silent> means "it doesn't show any message while command is being executed
-iabbrev <silent> __test_shortcut target_full_word<C-R>=Eatchar('\s')<CR>
+" iabbrev <silent> __test_shortcut target_full_word<C-R>=Eatchar('\s')<CR>
 "====================================
 " 2022-10-15 (Sat): for markdown code block
 autocmd FileType markdown iabbrev <silent> __code ```<CR><CR>```<UP><C-R>=Eatchar('\s')<CR>
@@ -67,36 +86,17 @@ iabbrev <expr> __today GetTodayDate().Eatchar('\s')
 " Front Matter for Markdown
 autocmd FileType markdown iabbrev __fmt ---
 \<CR>title:
+\<SPACE><C-R>=GetCurrentFileName()<CR>
 \<CR>category:
 \<CR>tags:
 \<CR>---<CR>
-\<UP><UP><UP><UP><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><RIGHT><SPACE>
+\<UP><UP><UP><UP><END>
 \<C-R>=Eatchar('\s')<CR>
 " command for shell script
 iabbrev <expr> __pwd system('pwd')
 iabbrev <expr> __ls system('ls')
 
-function GetCurrentFileName()
-    " 2022-10-30 (Sun): get current file name
-    " expand:
-    " - % means curent file
-    " - :p means absolute path
-    " split: split string ex) split("a,b,c", ',')
-    " substitute: ex) substitute(target_str, pattern, replace_pattern, flags)
-    " flag g means global
-    " . means meta character in regex, so, for expressing dot character, use
-    " \\. 
-    " ISSUE:
-    " how to reassign value to variable?
-    " why first character of function name in vim should be upper case?
-    let current_absolute_path = expand("%:p")
-    let current_file_name = split(current_absolute_path, '/')[-1]
-    let r = substitute(current_file_name, "_", " ", "g")
-    let r1 = split(r, "\\.")[0]
-    return r1
-endfunction
-
-" 2022-10-30 (Sun): test
+" 2022-10-30 (Sun): get current file name
 " in Vim, to excute Ex commands by : is equivalent to commands between <C-R>
 autocmd FileType markdown iabbrev __current_file_name <C-R>=GetCurrentFileName().Eatchar('\s')<CR>
 

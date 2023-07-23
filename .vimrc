@@ -27,6 +27,8 @@ set expandtab " tab 대신 space
 " ignorecase: 대소문자 구분없이 검색
 " smartcase: 대문자가 있을 경우 정확히 해당 단어로 검색
 set smartcase
+set linebreak
+set showbreak=...
 " 20220106 - 경고 소리를 화면 깜빡임으로 바꾸기
 "set visualbell
 " 20220228 - javascript tab indentation 2. *.js 로 하면 작동하지 않음

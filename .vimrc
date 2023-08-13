@@ -156,7 +156,7 @@ let g:NERDTreeWinSize=60
 "=======================================================
 " 20220225 - python syntax highlight in markdown
 " add vim, json syntax in markdown
-let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua', 'go', 'c']
+let g:markdown_fenced_languages = ['python', 'vim', 'json', 'sh', 'javascript', 'yaml', 'lua', 'go', 'c', 'sql']
 
 "=======================================================
 " 20220305 - Plugin AutoPair Config

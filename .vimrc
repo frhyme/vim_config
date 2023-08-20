@@ -223,4 +223,5 @@ source ~/gitRepositories/vim_config/markdownpreview_config.vim
 source ~/gitRepositories/vim_config/syntastic_config.vim
 " 20221013 - frhyme - remove trailing space after iabbrev
 source ~/gitRepositories/vim_config/iabbrev_list.vim
-
+" 20230820 - frhyme 
+source ~/gitRepositories/vim_config/autocmd_markdown.vim
